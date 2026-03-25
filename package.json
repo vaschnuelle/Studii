@@ -1,0 +1,20 @@
+{
+  "name": "studii",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Studii Phase 1 — web test app + Firebase backend (React Native app later)",
+  "workspaces": [
+    "web",
+    "functions",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w web",
+    "build": "npm run build -w @studii/shared && npm run build -w functions && npm run build -w web",
+    "build:functions": "npm run build -w functions",
+    "lint": "npm run lint -w web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
