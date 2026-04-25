@@ -14,6 +14,8 @@ export default defineConfig({
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
+      // Dev uses TS sources so the app does not require pre-building shared.
+      '@studii/shared': path.resolve(__dirname, './shared/src/index.ts'),
     },
   },
 

@@ -1,28 +1,6 @@
-# Dependencies
-node_modules/
-
-# Build
-dist/
-lib/
-*.tsbuildinfo
-
-# Env & secrets
+node_modules
+*-debug.log
 .env
 .env.local
 .env.*.local
-*.log
-
-# Firebase
-.firebase/
-firebase-debug.log
-firestore-debug.log
-ui-debug.log
-
-# OS / IDE
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
-
-# Vite
-web/dist/
+.supabase
