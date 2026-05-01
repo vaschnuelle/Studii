@@ -48,7 +48,7 @@ export default function HomePage() {
               <Sparkles className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Phase 2</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Wrapped</p>
               <h2 className="text-xl md:text-2xl font-black">Studii Wrapped</h2>
               <p className="text-white/85 text-sm font-medium mt-1">
                 {loading

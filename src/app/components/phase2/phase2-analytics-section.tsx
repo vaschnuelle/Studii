@@ -38,7 +38,7 @@ export function Phase2AnalyticsSection() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-black text-[#22223B]">Phase 2 insights</h2>
+          <h2 className="text-2xl font-black text-[#22223B]">Wrapped insights</h2>
           <p className="text-sm text-[#22223B]/60 font-medium">
             Personality, peaks, and buddy overlap — open Wrapped for the full story.
           </p>

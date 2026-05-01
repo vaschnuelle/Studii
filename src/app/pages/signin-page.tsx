@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { StudiiLogoWordmark } from "@/app/components/brand/studii-logo";
 import { useAuth } from "@/contexts/auth-context";
 import { validateSigninForm, type SigninFormValues } from "@/lib/auth/signin-validation";
 import { isSupabaseConfigured } from "@/lib/supabase";
@@ -64,6 +65,12 @@ export default function SigninPage() {
 
   return (
     <div className="max-w-xl mx-auto py-8">
+      <Link
+        to="/"
+        className="inline-block mb-5 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#508CA4]/30 rounded-xl"
+      >
+        <StudiiLogoWordmark className="h-14 max-w-[min(100%,320px)]" priority />
+      </Link>
       <div className="bg-white/85 backdrop-blur-md rounded-[2rem] p-8 border-2 border-white/90 shadow-xl">
         <h1 className="text-3xl font-black text-[#22223B]">Welcome back</h1>
         <p className="text-[#22223B]/65 mt-2 font-medium">

@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { Home, Timer, Users, TrendingUp, Sparkles, CircleDashed } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
+import { StudiiLogoCombined } from '@/app/components/brand/studii-logo';
 
 const DEFAULT_NAV_PROFILE_IMAGE = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop";
 
@@ -44,14 +45,19 @@ export default function Layout() {
       {/* Header */}
       <header className="relative z-10 bg-white/60 backdrop-blur-md border-b-2 border-white/80 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#508CA4] to-[#508CA4]/90 rounded-2xl flex items-center justify-center shadow-lg shadow-[#508CA4]/30 group-hover:scale-105 transition-transform">
-              <span className="text-2xl">📚</span>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-[#22223B]">Studii</h1>
-              <p className="text-xs text-[#22223B]/60 font-semibold">Stay focused together</p>
-            </div>
+          <Link
+            to="/"
+            className="group shrink-0 min-w-0 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#508CA4]/30 rounded-xl"
+          >
+            <StudiiLogoCombined
+              variant="navbar"
+              className="transition-opacity group-hover:opacity-95"
+              gapClassName="gap-3 md:gap-4"
+              iconClassName="h-14 w-14"
+              wordmarkClassName="h-11 max-w-[280px] md:h-12 md:max-w-[320px]"
+              alt="Studii"
+              priority
+            />
           </Link>
 
           {/* Mobile Profile Snapshot */}

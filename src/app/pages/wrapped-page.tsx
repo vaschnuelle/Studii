@@ -97,7 +97,7 @@ export default function WrappedPage() {
           ← Home
         </Link>
         <span className="text-xs font-bold text-[#22223B]/50 uppercase tracking-widest">
-          Phase 2 · {STEP_LABELS[step]}
+          Wrapped · {STEP_LABELS[step]}
         </span>
       </div>
 

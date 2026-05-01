@@ -1,4 +1,5 @@
 import { Clock, Users } from 'lucide-react';
+import { StudiiLogoCombined } from '@/app/components/brand/studii-logo';
 
 const friends = [
   {
@@ -25,9 +26,16 @@ export function HomeScreen() {
   return (
     <div className="h-full bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 pt-16 px-6 pb-6 flex flex-col">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#22223B] mb-1">Studii</h1>
-        <p className="text-[#22223B]/60">Stay focused together</p>
+      <div className="mb-8 max-w-full">
+        <StudiiLogoCombined
+          variant="full"
+          className="w-full max-w-sm sm:max-w-md"
+          gapClassName="gap-4 sm:gap-5"
+          iconClassName="h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem] shrink-0"
+          wordmarkClassName="h-12 sm:h-14 min-w-0 flex-1 max-w-none"
+          alt="Studii"
+          priority
+        />
       </div>
 
       {/* Stats Cards */}
