@@ -61,14 +61,17 @@ export default function SignupPage() {
         password: formValues.password,
       });
 
-      if (!wasSuccessful) {
+      if (!wasSuccessful.isSuccess) {
         return;
       }
 
-      setStatusMessage(
-        "Signup successful. Check your email to confirm your account, then sign in."
-      );
-      setTimeout(() => navigate("/"), 1200);
+      if (wasSuccessful.isAuthenticated) {
+        setStatusMessage("Signup successful. You're now signed in.");
+        setTimeout(() => navigate("/friends"), 800);
+        return;
+      }
+
+      setStatusMessage("Signup successful. Please confirm your email, then sign in.");
     } finally {
       setIsSubmitting(false);
     }

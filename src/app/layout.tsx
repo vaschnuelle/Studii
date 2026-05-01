@@ -2,9 +2,21 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { Home, Timer, Users, TrendingUp, Sparkles, CircleDashed } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
 
+const DEFAULT_NAV_PROFILE_IMAGE = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop";
+
+/**
+ * Returns the best available display name for header account identity.
+ */
+function buildHeaderDisplayName(fullName: string | null | undefined, email: string | null | undefined): string {
+  if (fullName && fullName.trim().length > 0) {
+    return fullName;
+  }
+  return email ?? "Guest";
+}
+
 export default function Layout() {
   const location = useLocation();
-  const { currentUser, signout } = useAuth();
+  const { currentUser, currentProfile, signout } = useAuth();
   
   const isActive = (path: string) => {
     if (path === '/') {
@@ -42,6 +54,33 @@ export default function Layout() {
             </div>
           </Link>
 
+          {/* Mobile Profile Snapshot */}
+          <Link
+            to="/profile"
+            className="md:hidden flex items-center gap-2 rounded-2xl px-1.5 py-1.5 focus:outline-none focus:ring-4 focus:ring-[#508CA4]/30"
+            aria-label="Open profile"
+          >
+            <div className="w-10 h-10 bg-gradient-to-br from-[#508CA4] to-[#508CA4]/90 rounded-2xl overflow-hidden ring-2 ring-white/80 shadow-lg">
+              <img
+                src={currentProfile?.avatar_url ?? DEFAULT_NAV_PROFILE_IMAGE}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="text-right leading-tight">
+              <p className="text-xs font-bold text-[#22223B] max-w-[120px] truncate">
+                {buildHeaderDisplayName(currentProfile?.full_name, currentUser?.email)}
+              </p>
+              <p className="text-[11px] text-[#22223B]/60 max-w-[120px] truncate">
+                {currentProfile?.username
+                  ? `@${currentProfile.username}`
+                  : currentUser
+                    ? "Active"
+                    : "Guest"}
+              </p>
+            </div>
+          </Link>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 flex-wrap justify-end max-w-xl">
             {navItems.map((item) => {
@@ -67,18 +106,38 @@ export default function Layout() {
           {/* User Profile */}
           <div className="hidden md:flex items-center gap-3">
             <div className="text-right">
-              <p className="text-sm font-bold text-[#22223B]">{currentUser?.email ?? "Guest"}</p>
+              <p className="text-sm font-bold text-[#22223B]">
+                {buildHeaderDisplayName(currentProfile?.full_name, currentUser?.email)}
+              </p>
               <p className="text-xs text-[#22223B]/60">
-                {currentUser ? "Supabase account active" : "Sign up to sync sessions"}
+                {currentProfile?.username
+                  ? `@${currentProfile.username}`
+                  : currentUser
+                    ? "Supabase account active"
+                    : "Sign up to sync sessions"}
               </p>
             </div>
-            <div className="w-12 h-12 bg-gradient-to-br from-[#508CA4] to-[#508CA4]/90 rounded-2xl overflow-hidden ring-2 ring-white/80 shadow-lg">
-              <img
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {currentUser ? (
+              <Link
+                to="/profile"
+                className="w-12 h-12 bg-gradient-to-br from-[#508CA4] to-[#508CA4]/90 rounded-2xl overflow-hidden ring-2 ring-white/80 shadow-lg focus:outline-none focus:ring-4 focus:ring-[#508CA4]/40"
+                aria-label="Open profile"
+              >
+                <img
+                  src={currentProfile?.avatar_url ?? DEFAULT_NAV_PROFILE_IMAGE}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            ) : (
+              <div className="w-12 h-12 bg-gradient-to-br from-[#508CA4] to-[#508CA4]/90 rounded-2xl overflow-hidden ring-2 ring-white/80 shadow-lg">
+                <img
+                  src={DEFAULT_NAV_PROFILE_IMAGE}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
             {currentUser ? (
               <button
                 onClick={() => void signout()}

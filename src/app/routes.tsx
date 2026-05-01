@@ -8,6 +8,7 @@ import WrappedPage from "./pages/wrapped-page";
 import SignupPage from "./pages/signup-page";
 import SigninPage from "./pages/signin-page";
 import PomodoroPage from "./pages/pomodoro-page";
+import ProfilePage from "./pages/profile-page";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: "wrapped", Component: WrappedPage },
       { path: "signup", Component: SignupPage },
       { path: "signin", Component: SigninPage },
+      { path: "profile", Component: ProfilePage },
     ],
   },
 ]);
